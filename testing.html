@@ -329,24 +329,15 @@
     <!-- Header Navigation Section -->
     <header>
         <div class="logo-section">
-            <!-- Left Logo Placeholder (UTP logo) -->
-            <div class="logo-placeholder">
-                <!-- Replace with your actual image path when ready, e.g. <img src="utp_logo.png" alt="UTP Logo"> -->
-                <span>UTP LOGO</span>
-            </div>
-            <!-- Right Logo Placeholder (Hydra Logo) -->
-            <div class="logo-placeholder">
-                <!-- Replace with your actual image path when ready -->
-                <span>HYDRA LOGO</span>
-            </div>
+            <div class="logo-placeholder"><span>UTP LOGO</span></div>
+            <div class="logo-placeholder"><span>HYDRA LOGO</span></div>
         </div>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Kayak Schedule</a></li>
-                <!-- Session Booking is highlighted as active -->
-                <li><a href="#" class="active">Session Booking</a></li>
-                <li><a href="#">My Booking</a></li>
+                <li><a href="testing.html" class="active">Session Booking</a></li>
+                <li><a href="my_booking.html">My Booking</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contacts</a></li>
             </ul>
@@ -356,7 +347,6 @@
     <!-- Main Content Section -->
     <main>
         <div class="title-container">
-            <!-- Icon resembling the checklist graphic next to the header -->
             <i class="fa-regular fa-calendar-check"></i>
             <h1>Session Booking</h1>
         </div>
@@ -376,7 +366,6 @@
             <div class="form-group">
                 <label for="kayakType">Type of Kayak</label>
                 <div class="pill-container">
-                    <!-- Note: The mock image uses a person icon here; you can swap it to an anchor or boat icon if preferred -->
                     <i class="fa-regular fa-user field-icon"></i>
                     <select id="kayakType" required>
                         <option value="" disabled selected hidden></option>
@@ -425,7 +414,6 @@
                 <div class="pill-container">
                     <i class="fa-solid fa-users field-icon"></i>
                     <span class="pax-display" id="paxValue">1</span>
-                    <!-- Hidden input to pass actual selected value when form is submitted -->
                     <input type="hidden" id="paxInput" name="pax" value="1">
                     
                     <div class="pax-controls">
@@ -471,18 +459,13 @@
         </div>
     </footer>
 
-    <!-- ==========================================
-       6. INTERACTIVITY & CUSTOMIZATION SCRIPTS
-       ========================================== */ -->
     <script>
-        // Simple counter script for the 'Pax' field
         let currentPax = 1;
         const paxValueSpan = document.getElementById('paxValue');
         const paxHiddenInput = document.getElementById('paxInput');
 
         function adjustPax(amount) {
             currentPax += amount;
-            // Prevent Pax count from dropping below 1
             if (currentPax < 1) {
                 currentPax = 1;
             }
@@ -490,21 +473,24 @@
             paxHiddenInput.value = currentPax;
         }
 
-        // Action when "Book Session" button is clicked
         function handleFormSubmit(event) {
             event.preventDefault();
             
-            // Collect form data values
-            const username = document.getElementById('username').value;
-            const kayakType = document.getElementById('kayakType').value;
-            const dayTime = document.getElementById('dayTime').value;
-            const sessionSlot = document.getElementById('sessionSlot').value;
-            const pax = document.getElementById('paxInput').value;
-            const paymentMethod = document.getElementById('paymentMethod').value;
+            // Gather form data values
+            const bookingData = {
+                username: document.getElementById('username').value,
+                kayakType: document.getElementById('kayakType').value,
+                dayTime: document.getElementById('dayTime').value,
+                sessionSlot: document.getElementById('sessionSlot').value,
+                pax: document.getElementById('paxInput').value,
+                paymentMethod: document.getElementById('paymentMethod').value
+            };
 
-            // Log output to console (can be redirected to your backend or email script)
-            console.log("Booking Received:", { username, kayakType, dayTime, sessionSlot, pax, paymentMethod });
-            alert(`Booking initiated for ${username} (${pax} Pax). Setup backend API handling here!`);
+            // Save details to the local browser storage
+            localStorage.setItem('kayakBooking', JSON.stringify(bookingData));
+
+            // Redirect automatically to the My Booking page
+            window.location.href = 'my_booking.html';
         }
     </script>
 </body>
