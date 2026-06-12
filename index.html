@@ -1186,8 +1186,15 @@
         }
 
         // Save session data to local browser storage
+// Saves booking on submission, sends data to database, and flips view
         function handleFormSubmit(event) {
             event.preventDefault();
+
+            // Show loading state on the button
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
             
             const bookingData = {
                 username: document.getElementById('username').value,
@@ -1198,10 +1205,37 @@
                 paymentMethod: document.getElementById('paymentMethod').value
             };
 
+            // Save to browser cache (for local page switching)
             localStorage.setItem('kayakBooking', JSON.stringify(bookingData));
 
-            // Switch directly to details screen
-            switchView('mybooking');
+            // CUSTOMIZE: Paste your Google Web App URL inside the single quotes below
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
+
+            // Send data to the Google Sheet and trigger the email
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Prevents cross-origin block on static hosting
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookingData)
+            })
+            .then(() => {
+                alert('Booking successfully registered! A confirmation email has been sent.');
+                // Load details and show the "My Booking" view
+                switchView('mybooking');
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Saved locally, but failed to connect to database.');
+                switchView('mybooking');
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
         }
 
         // Fetches storage details to render in My Booking panel
