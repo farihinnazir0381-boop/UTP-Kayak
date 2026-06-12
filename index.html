@@ -1184,9 +1184,8 @@
                 loadBookingDetails();
             }
         }
-
-        // Save session data to local browser storage
-// Saves booking on submission, sends data to database, and flips view
+// Save session data to local browser storage
+        // Saves booking on submission, sends data to database, and flips view
         function handleFormSubmit(event) {
             event.preventDefault();
 
@@ -1208,27 +1207,30 @@
             // Save to browser cache (for local page switching)
             localStorage.setItem('kayakBooking', JSON.stringify(bookingData));
 
-            // CUSTOMIZE: Paste your Google Web App URL inside the single quotes below
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
 
-            // Send data to the Google Sheet and trigger the email
+            // Send data to the Google Sheet (simple request to avoid CORS blocks)
             fetch(scriptURL, {
                 method: 'POST',
-                mode: 'no-cors', // Prevents cross-origin block on static hosting
-                cache: 'no-cache',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(bookingData)
+                body: JSON.stringify(bookingData) 
             })
-            .then(() => {
-                alert('Booking successfully registered! A confirmation email has been sent.');
-                // Load details and show the "My Booking" view
-                switchView('mybooking');
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response failed');
+                }
+                return response.json();
+            })
+            .then(res => {
+                if (res.result === 'success') {
+                    alert('Booking successfully registered! A confirmation email has been sent.');
+                    switchView('mybooking');
+                } else {
+                    alert('Database Error: ' + res.error);
+                }
             })
             .catch(error => {
-                console.error('Error!', error.message);
-                alert('Saved locally, but failed to connect to database.');
+                console.error('Error details:', error);
+                alert('Connection Failed: Could not send data to your Google Sheet. It was saved locally instead.');
                 switchView('mybooking');
             })
             .finally(() => {
@@ -1238,7 +1240,62 @@
             });
         }
 
-        // Fetches storage details to render in My Booking panel
+        // Listens for the Enter key on the Username field to look up a booking
+        document.getElementById('usernameDisplay').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                performDatabaseLookup();
+            }
+        });
+
+        // Pulls booking details from Google Sheets using GET request
+        function performDatabaseLookup() {
+            const emailInput = document.getElementById('usernameDisplay').value.trim();
+            if (!emailInput) {
+                alert('Please enter an email address to look up.');
+                return;
+            }
+
+            // Set loading indicators inside detail card
+            document.getElementById('lbl-username').textContent = 'Searching...';
+            document.getElementById('lbl-session').textContent = 'Searching...';
+            document.getElementById('lbl-datetime').textContent = 'Searching...';
+            document.getElementById('lbl-kayak').textContent = 'Searching...';
+            document.getElementById('lbl-pax').textContent = 'Searching...';
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
+            const lookupURL = `${scriptURL}?email=${encodeURIComponent(emailInput)}`;
+
+            fetch(lookupURL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.result === 'success') {
+                    const booking = data.booking;
+                    
+                    // Display fetched records
+                    document.getElementById('lbl-username').textContent = booking.username;
+                    document.getElementById('lbl-pax').textContent = booking.pax;
+                    document.getElementById('lbl-kayak').textContent = booking.kayakType;
+                    document.getElementById('lbl-datetime').textContent = booking.dayTime;
+                    document.getElementById('lbl-session').textContent = booking.sessionSlot;
+                } else {
+                    alert(data.message || 'No booking record found.');
+                    clearBookingDetails();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                alert('Failed to connect to search database.');
+                clearBookingDetails();
+            });
+        }
+
+        // Automatically loads locally saved booking if available
         function loadBookingDetails() {
             const savedData = localStorage.getItem('kayakBooking');
             
@@ -1268,17 +1325,19 @@
                 if (sessionText === 'slot4') sessionText = 'Session 4 (05:00 PM - 07:00 PM)';
                 document.getElementById('lbl-session').textContent = sessionText;
             } else {
-                // Clear display if empty
-                document.getElementById('usernameDisplay').value = '';
-                document.getElementById('lbl-username').textContent = '';
-                document.getElementById('lbl-pax').textContent = '';
-                document.getElementById('lbl-kayak').textContent = '';
-                document.getElementById('lbl-datetime').textContent = '';
-                document.getElementById('lbl-session').textContent = '';
+                clearBookingDetails();
             }
         }
 
-        // Initial check on DOM execution
+        function clearBookingDetails() {
+            document.getElementById('lbl-username').textContent = '';
+            document.getElementById('lbl-session').textContent = '';
+            document.getElementById('lbl-datetime').textContent = '';
+            document.getElementById('lbl-kayak').textContent = '';
+            document.getElementById('lbl-pax').textContent = '';
+        }
+
+        // Run local load checks on startup
         document.addEventListener('DOMContentLoaded', () => {
             loadBookingDetails();
         });
