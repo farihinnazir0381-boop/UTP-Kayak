@@ -1209,9 +1209,12 @@
 
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
 
-            // Send data to the Google Sheet (simple request to avoid CORS blocks)
+            // Send data to the Google Sheet (Bypasses preflight CORS checks)
             fetch(scriptURL, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
                 body: JSON.stringify(bookingData) 
             })
             .then(response => {
