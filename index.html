@@ -1009,11 +1009,15 @@
 
             <div class="my-booking-grid">
                 <div class="form-group">
-                    <label for="usernameDisplay">Username</label>
+                    <label for="usernameDisplay">Reference Code</label>
                     <div class="pill-container">
-                        <i class="fa-regular fa-user field-icon"></i>
-                        <input type="text" id="usernameDisplay" placeholder="username@gmail.com">
+                        <i class="fa-solid fa-hashtag field-icon"></i>
+                        <input type="text" id="usernameDisplay" placeholder="e.g., 4821">
                     </div>
+                    <!-- Blue Search Button styled exactly like "Book Session" but with the text "Find" -->
+                    <button type="button" class="submit-btn" style="margin-top: 15px; width: 100%;" onclick="performDatabaseLookup()">
+                        Find
+                    </button>
                 </div>
 
                 <div class="detail-card">
@@ -1352,5 +1356,3 @@
     </script>
 </body>
 </html>
-
---- END OF FILE Paste June 21, 2026 - 2:58AM ---
