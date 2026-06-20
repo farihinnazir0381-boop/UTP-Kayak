@@ -1195,7 +1195,11 @@
             submitBtn.textContent = 'Processing...';
             submitBtn.disabled = true;
             
+            // Generate a random 4-digit Reference Number (between 1000 and 9999)
+            const generatedRef = Math.floor(1000 + Math.random() * 9000);
+
             const bookingData = {
+                referenceNum: generatedRef,
                 username: document.getElementById('username').value,
                 kayakType: document.getElementById('kayakType').value,
                 dayTime: document.getElementById('dayTime').value,
@@ -1225,7 +1229,7 @@
             })
             .then(res => {
                 if (res.result === 'success') {
-                    alert('Booking successfully registered! A confirmation email has been sent.');
+                    alert(`Booking successfully registered!\n\nYour Reference Number is: #${generatedRef}\n\nA confirmation email has been sent to you.`);
                     switchView('mybooking');
                 } else {
                     alert('Database Error: ' + res.error);
@@ -1233,7 +1237,7 @@
             })
             .catch(error => {
                 console.error('Error details:', error);
-                alert('Connection Failed: Could not send data to your Google Sheet. It was saved locally instead.');
+                alert(`Connection Failed: Data saved locally instead.\n\nYour Reference Number is: #${generatedRef}`);
                 switchView('mybooking');
             })
             .finally(() => {
@@ -1243,7 +1247,7 @@
             });
         }
 
-        // Listens for the Enter key on the Username field to look up a booking
+        // Listens for the Enter key on the Reference Number field to look up a booking
         document.getElementById('usernameDisplay').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -1253,9 +1257,9 @@
 
         // Pulls booking details from Google Sheets using GET request
         function performDatabaseLookup() {
-            const emailInput = document.getElementById('usernameDisplay').value.trim();
-            if (!emailInput) {
-                alert('Please enter an email address to look up.');
+            const refInput = document.getElementById('usernameDisplay').value.trim();
+            if (!refInput) {
+                alert('Please enter a Reference Number to look up.');
                 return;
             }
 
@@ -1267,7 +1271,7 @@
             document.getElementById('lbl-pax').textContent = 'Searching...';
 
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
-            const lookupURL = `${scriptURL}?email=${encodeURIComponent(emailInput)}`;
+            const lookupURL = `${scriptURL}?ref=${encodeURIComponent(refInput)}`;
 
             fetch(lookupURL)
             .then(response => {
@@ -1305,7 +1309,8 @@
             if (savedData) {
                 const booking = JSON.parse(savedData);
                 
-                document.getElementById('usernameDisplay').value = booking.username;
+                // Populate the inputs with the generated reference code
+                document.getElementById('usernameDisplay').value = booking.referenceNum;
                 document.getElementById('lbl-username').textContent = booking.username;
                 document.getElementById('lbl-pax').textContent = booking.pax;
                 
