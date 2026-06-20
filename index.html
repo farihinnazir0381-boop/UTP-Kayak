@@ -1023,7 +1023,6 @@
                 <div class="detail-card">
                     <h2>Detail of Booking</h2>
                     <div class="detail-list">
-                        <!-- References Number display row inside the details card -->
                         <div class="detail-item">
                             <span>References Number :</span>
                             <span id="lbl-ref" class="detail-val"></span>
@@ -1193,7 +1192,7 @@
                 loadBookingDetails();
             }
         }
-
+// Save session data to local browser storage
         // Saves booking on submission, sends data to database, and flips view
         function handleFormSubmit(event) {
             event.preventDefault();
@@ -1296,7 +1295,6 @@
                     
                     // Display fetched records
                     document.getElementById('lbl-username').textContent = booking.username;
-                    document.getElementById('lbl-ref').textContent = booking.referenceNum;
                     document.getElementById('lbl-pax').textContent = booking.pax;
                     document.getElementById('lbl-kayak').textContent = booking.kayakType;
                     document.getElementById('lbl-datetime').textContent = booking.dayTime;
@@ -1321,29 +1319,28 @@
                 const booking = JSON.parse(savedData);
                 
                 // Populate the inputs with the generated reference code
-                document.getElementById('usernameDisplay').value = booking.referenceNum || "";
-                document.getElementById('lbl-username').textContent = booking.username || "";
-                document.getElementById('lbl-ref').textContent = booking.referenceNum || "";
-                document.getElementById('lbl-pax').textContent = booking.pax || "";
+                document.getElementById('usernameDisplay').value = booking.referenceNum;
+                document.getElementById('lbl-username').textContent = booking.username;
+                document.getElementById('lbl-pax').textContent = booking.pax;
                 
                 let kayakName = booking.kayakType;
                 if (kayakName === 'single') kayakName = 'Single Kayak';
                 if (kayakName === 'double') kayakName = 'Double Kayak';
-                document.getElementById('lbl-kayak').textContent = kayakName || "";
+                document.getElementById('lbl-kayak').textContent = kayakName;
                 
                 let timeText = booking.dayTime;
                 if (timeText === 'weekday-morning') timeText = 'Weekdays - Morning';
                 if (timeText === 'weekday-evening') timeText = 'Weekdays - Evening';
                 if (timeText === 'weekend-morning') timeText = 'Weekends - Morning';
                 if (timeText === 'weekend-evening') timeText = 'Weekends - Evening';
-                document.getElementById('lbl-datetime').textContent = timeText || "";
+                document.getElementById('lbl-datetime').textContent = timeText;
 
                 let sessionText = booking.sessionSlot;
                 if (sessionText === 'slot1') sessionText = 'Session 1 (08:00 AM - 10:00 AM)';
                 if (sessionText === 'slot2') sessionText = 'Session 2 (10:30 AM - 12:30 PM)';
                 if (sessionText === 'slot3') sessionText = 'Session 3 (02:30 PM - 04:30 PM)';
                 if (sessionText === 'slot4') sessionText = 'Session 4 (05:00 PM - 07:00 PM)';
-                document.getElementById('lbl-session').textContent = sessionText || "";
+                document.getElementById('lbl-session').textContent = sessionText;
             } else {
                 clearBookingDetails();
             }
@@ -1351,7 +1348,6 @@
 
         function clearBookingDetails() {
             document.getElementById('lbl-username').textContent = '';
-            document.getElementById('lbl-ref').textContent = '';
             document.getElementById('lbl-session').textContent = '';
             document.getElementById('lbl-datetime').textContent = '';
             document.getElementById('lbl-kayak').textContent = '';
@@ -1365,5 +1361,3 @@
     </script>
 </body>
 </html>
-
---- END OF FILE Paste June 21, 2026 - 3:13AM ---
