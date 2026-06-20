@@ -366,4 +366,991 @@
 
         .pill-container {
             border: 2px solid var(--input-border);
-            bord
+            border-radius: 50px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .pill-container i.field-icon {
+            font-size: 24px;
+            color: #333333;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .pill-container input, .pill-container select {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+            font-family: var(--font-sans);
+            color: #333333;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .pill-container input::placeholder {
+            color: #888888;
+        }
+
+        .dropdown-indicator {
+            position: absolute;
+            right: 25px;
+            font-size: 12px;
+            color: #333333;
+            pointer-events: none;
+        }
+
+        /* Pax Counter design */
+        .pax-display {
+            font-size: 18px;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        .pax-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .pax-btn {
+            border: 1.5px solid #000000;
+            background: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .pax-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .helper-text {
+            font-size: 13px;
+            color: #666666;
+            margin-top: 6px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .form-actions {
+            grid-column: span 3;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            padding: 12px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #06314f;
+        }
+
+        /* ==========================================
+           6. SECTION 4: MY BOOKING
+           ========================================== */
+        #section-mybooking {
+            padding: 60px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .my-booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .detail-card {
+            border: 4px solid #000000;
+            border-radius: 40px;
+            padding: 30px 45px;
+            background-color: #ffffff;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .detail-card h2 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: var(--font-sans);
+            color: #000000;
+        }
+
+        .detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            line-height: 1.5;
+        }
+
+        .detail-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+        }
+
+        .detail-val {
+            font-weight: normal;
+            color: #444444;
+        }
+
+        /* ==========================================
+           7. SECTION 5: ABOUT PAGE
+           ========================================== */
+        #section-about {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                        url('https://images.unsplash.com/photo-1455763912495-ac4e022f6dcc?q=80&w=1600') no-repeat center center/cover;
+            padding: 60px 5%;
+            color: #ffffff;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #section-about .title-container h1 {
+            color: #ffffff;
+        }
+
+        #section-about .title-container i {
+            color: #ffffff;
+        }
+
+        .about-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .about-pillar {
+            border-top-left-radius: 180px;
+            border-top-right-radius: 180px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 50px 30px 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Color variations matching the mockup theme */
+        .pillar-blue { background-color: rgba(9, 71, 112, 0.85); }
+        .pillar-gold { background-color: rgba(194, 153, 61, 0.85); }
+        .pillar-gray { background-color: rgba(220, 220, 220, 0.85); color: #222222; }
+
+        .pillar-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .circle-gold { background-color: #c2993d; }
+        .circle-white { background-color: #ffffff; }
+        .circle-blue { background-color: #094770; }
+
+        .about-pillar h3 {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .about-pillar p {
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .pillar-gray p {
+            color: #333333;
+        }
+
+        /* ==========================================
+           8. SECTION 6: CONTACTS
+           ========================================== */
+        #section-contacts {
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600') no-repeat center center/cover;
+            padding: 80px 5%;
+            color: #ffffff;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            align-items: center;
+        }
+
+        .contacts-left h2 {
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .contacts-left h3 {
+            font-size: 1.8rem;
+            color: var(--active-gold);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .contacts-left p {
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 40px;
+            color: #cccccc;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .contact-info-item i {
+            font-size: 20px;
+            color: var(--active-gold);
+        }
+
+        /* Right panel clean visual contact cards */
+        .contacts-right {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 25px 35px;
+            color: #000000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .contact-card h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .contact-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .contact-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-card ul li i {
+            color: var(--primary-blue);
+            width: 15px;
+        }
+
+        .person-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* ==========================================
+           9. MEDIA QUERIES FOR MOBILE ADAPTIVENESS
+           ========================================== */
+        @media (max-width: 900px) {
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+            .form-actions {
+                grid-column: span 1;
+            }
+            .my-booking-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .detail-item {
+                grid-template-columns: 130px 1fr;
+                font-size: 16px;
+            }
+            .home-grid, .contacts-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .home-left h2, .contacts-left h2 {
+                font-size: 3rem;
+            }
+            .home-right {
+                align-items: center;
+                margin-top: 30px;
+            }
+            .polaroid {
+                transform: rotate(0deg) !important;
+                translate: 0 0 !important;
+            }
+            .about-pillars {
+                grid-template-columns: 1fr;
+            }
+            header, footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .footer-right {
+                text-align: center;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+       TOP NAVIGATION BAR
+       ========================================== -->
+    <header>
+        <div class="logo-section">
+            <div class="logo-placeholder"><span>UTP LOGO</span></div>
+            <div class="logo-placeholder"><span>HYDRA LOGO</span></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="nav-home" class="active" onclick="switchView('home')">Home</a></li>
+                <li><a id="nav-schedule" onclick="switchView('schedule')">Kayak Schedule</a></li>
+                <li><a id="nav-booking" onclick="switchView('booking')">Session Booking</a></li>
+                <li><a id="nav-mybooking" onclick="switchView('mybooking')">My Booking</a></li>
+                <li><a id="nav-about" onclick="switchView('about')">About</a></li>
+                <li><a id="nav-contacts" onclick="switchView('contacts')">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+       MAIN CONTENT PANEL
+       ========================================== -->
+    <main>
+
+        <!-- ==========================================
+           SECTION 1: HOME PAGE
+           ========================================== -->
+        <section id="section-home" class="view-section active-view">
+            <div class="home-grid">
+                <div class="home-left">
+                    <h2>Welcome<br>to <span class="gold-text">UTP</span> Kayak</h2>
+                    <p>The Kayak Club at Universiti Teknologi PETRONAS is a recreational and sports-based student organization that promotes kayaking, water safety, teamwork, and outdoor adventure activities. The club provides students with opportunities to develop paddling techniques, leadership skills, physical fitness, and environmental awareness through training sessions, competitions, expeditions, and community engagement programs. Members are encouraged to participate in both recreational and competitive kayaking activities while fostering discipline, resilience, and collaboration.</p>
+                </div>
+                <div class="home-right">
+                    <div class="polaroid">
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF12buz2_ICPZoSasjXnwkV-3eLGkuG0GhknLiOTPLjx-YUhuTWlH6nHXvgDRJZj8smsQP6hJkHYes7faTmSXJ3dMl_ihV7YUCzWu5B3AIE_65FTDtECn17LXKeUEXEyy3MyYjm=s1360-w1360-h1020-rw" alt="UTP Kayak Training">
+                    </div>
+                    <div class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400" alt="Lake Sunset Kayak">
+                    </div>
+                    <div class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1455763912495-ac4e022f6dcc?q=80&w=400" alt="Scenic Kayaking">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+           SECTION 2: KAYAK SCHEDULE
+           ========================================== -->
+        <section id="section-schedule" class="view-section">
+            <div class="title-container">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h1>Kayak Schedule</h1>
+            </div>
+
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thur</th>
+                            <th>Friday</th>
+                            <th>Sat</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-column">8.00 AM - 12.00 PM</td>
+                            <td class="slot-blue"></td>
+                            <td class="slot-blue"></td>
+                            <td class="slot-blue"></td>
+                            <td class="slot-blue"></td>
+                            <td class="slot-blue"></td>
+                            <td class="slot-blue"></td>
+                            <td class="slot-blue"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">1.30 PM - 4.30 PM</td>
+                            <td class="slot-orange"></td>
+                            <td class="slot-orange"></td>
+                            <td class="slot-orange"></td>
+                            <td class="slot-orange"></td>
+                            <td class="slot-orange"></td>
+                            <td class="slot-orange"></td>
+                            <td class="slot-orange"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">5.30 PM - 7.00 PM</td>
+                            <td class="slot-green"></td>
+                            <td class="slot-pink"></td>
+                            <td class="slot-green"></td>
+                            <td class="slot-pink"></td>
+                            <td class="slot-green"></td>
+                            <td class="slot-pink"></td>
+                            <td class="slot-pink"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="schedule-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--cell-green);"></div>
+                    <span>Operation Hour</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--cell-blue);"></div>
+                    <span>Event Booking Slot 1</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--cell-orange);"></div>
+                    <span>Event Booking Slot 2</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--cell-pink);"></div>
+                    <span>Athletes Training Session</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+           SECTION 3: SESSION BOOKING
+           ========================================== -->
+        <section id="section-booking" class="view-section">
+            <div class="title-container">
+                <i class="fa-regular fa-calendar-check"></i>
+                <h1>Session Booking</h1>
+            </div>
+
+            <form class="booking-form" id="kayakBookingForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-user field-icon"></i>
+                        <input type="email" id="username" placeholder="username@gmail.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="kayakType">Type of Kayak</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-user field-icon"></i>
+                        <select id="kayakType" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="single">Single Kayak</option>
+                            <option value="double">Double Kayak</option>
+                        </select>
+                        <div class="dropdown-indicator">v</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dayTime">Day / Time</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-calendar field-icon"></i>
+                        <select id="dayTime" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="weekday-morning">Weekdays - Morning</option>
+                            <option value="weekday-evening">Weekdays - Evening</option>
+                            <option value="weekend-morning">Weekends - Morning</option>
+                            <option value="weekend-evening">Weekends - Evening</option>
+                        </select>
+                        <div class="dropdown-indicator">v</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sessionSlot">Session</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-clock field-icon"></i>
+                        <select id="sessionSlot" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="slot1">Session 1 (08:00 AM - 10:00 AM)</option>
+                            <option value="slot2">Session 2 (10:30 AM - 12:30 PM)</option>
+                            <option value="slot3">Session 3 (02:30 PM - 04:30 PM)</option>
+                            <option value="slot4">Session 4 (05:00 PM - 07:00 PM)</option>
+                        </select>
+                        <div class="dropdown-indicator">v</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pax</label>
+                    <div class="pill-container">
+                        <i class="fa-solid fa-users field-icon"></i>
+                        <span class="pax-display" id="paxValue">1</span>
+                        <input type="hidden" id="paxInput" name="pax" value="1">
+                        <div class="pax-controls">
+                            <button type="button" class="pax-btn" onclick="adjustPax(1)"><i class="fa-solid fa-plus"></i></button>
+                            <button type="button" class="pax-btn" onclick="adjustPax(-1)"><i class="fa-solid fa-minus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment</label>
+                    <div>
+                        <div class="pill-container">
+                            <i class="fa-regular fa-credit-card field-icon"></i>
+                            <select id="paymentMethod" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="student-id">Student ID Card</option>
+                                <option value="online-banking">Online Banking</option>
+                                <option value="card">Credit / Debit Card</option>
+                            </select>
+                            <div class="dropdown-indicator">v</div>
+                        </div>
+                        <div class="helper-text">UTP students may select the option : student ID card</div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Book Session</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- ==========================================
+           SECTION 4: MY BOOKING
+           ========================================== -->
+        <section id="section-mybooking" class="view-section">
+            <div class="title-container">
+                <i class="fa-regular fa-calendar-check"></i>
+                <h1>My Booking</h1>
+            </div>
+
+            <div class="my-booking-grid">
+                <div class="form-group">
+                    <label for="usernameDisplay">Username</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-user field-icon"></i>
+                        <input type="text" id="usernameDisplay" placeholder="username@gmail.com">
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <h2>Detail of Booking</h2>
+                    <div class="detail-list">
+                        <div class="detail-item">
+                            <span>Username :</span>
+                            <span id="lbl-username" class="detail-val"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Session :</span>
+                            <span id="lbl-session" class="detail-val"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Date / Time :</span>
+                            <span id="lbl-datetime" class="detail-val"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Type of Kayak :</span>
+                            <span id="lbl-kayak" class="detail-val"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Pax :</span>
+                            <span id="lbl-pax" class="detail-val"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+           SECTION 5: ABOUT
+           ========================================== -->
+        <section id="section-about" class="view-section">
+            <div class="title-container">
+                <i class="fa-solid fa-circle-info"></i>
+                <h1>About Us</h1>
+            </div>
+
+            <div class="about-pillars">
+                <div class="about-pillar pillar-blue">
+                    <div class="pillar-circle circle-gold"></div>
+                    <h3>Founding</h3>
+                    <p>The UTP Kayak Club was officially established in 1997 with the aim of introducing kayaking as a recreational and competitive activity for students. Founded by a group of passionate students who shared a love for outdoor adventures and water sports, the club was created to provide a platform for skill development, teamwork, leadership, and personal growth. Since its establishment, the club has continued to promote an active lifestyle and foster a strong kayaking community within Universiti Teknologi PETRONAS.</p>
+                </div>
+                <div class="about-pillar pillar-gold">
+                    <div class="pillar-circle circle-white"></div>
+                    <h3>History</h3>
+                    <p>Since its establishment, the UTP Kayak Club has grown steadily from a small group of kayaking enthusiasts into an active student organization. Over the years, the club has organized various training sessions, recreational paddling activities, expeditions, competitions, and community engagement programs. These activities have provided members with opportunities to develop technical kayaking skills, enhance teamwork and leadership abilities, and foster a deeper appreciation for outdoor recreation. Through the dedication of its members and committee, the club continues to strengthen its presence within Universiti Teknologi PETRONAS while promoting a culture of adventure, safety, and sportsmanship.</p>
+                </div>
+                <div class="about-pillar pillar-gray">
+                    <div class="pillar-circle circle-blue"></div>
+                    <h3>Achievements</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+           SECTION 6: CONTACTS
+           ========================================== -->
+        <section id="section-contacts" class="view-section">
+            <div class="contacts-grid">
+                <div class="contacts-left">
+                    <h2>Contacts</h2>
+                    <h3>Let's Get Connected</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <div class="contact-info-list">
+                        <div class="contact-info-item">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>+60 xxx xxxx</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>sharedmailbox@utp.edu.my</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contacts-right">
+                    <div class="contact-card">
+                        <h4>Advisor</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-phone"></i> +60xxxxxxx</li>
+                            <li><i class="fa-solid fa-envelope"></i> email@utp.edu.my</li>
+                        </ul>
+                    </div>
+                    <div class="contact-card">
+                        <div class="person-group">
+                            <div>
+                                <h4>Person A</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-phone"></i> +60xxxxxxx</li>
+                                    <li><i class="fa-solid fa-envelope"></i> email@utp.edu.my</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Person B</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-phone"></i> +60xxxxxxx</li>
+                                    <li><i class="fa-solid fa-envelope"></i> email@utp.edu.my</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Person C</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-phone"></i> +60xxxxxxx</li>
+                                    <li><i class="fa-solid fa-envelope"></i> email@utp.edu.my</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+       BOTTOM FOOTER BAR
+       ========================================== -->
+    <footer>
+        <div class="footer-left">
+            Universiti Teknologi PETRONAS • UTP HYDRA Kayak Team
+        </div>
+        <div class="footer-right">
+            +60 xxx xxxx<br>
+            <a href="mailto:sharedmailbox@utp.edu.my">sharedmailbox@utp.edu.my</a>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+       DYNAMIC ROUTING & PROGRAM ACTIONS
+       ========================================== -->
+    <script>
+        let currentPax = 1;
+        const paxValueSpan = document.getElementById('paxValue');
+        const paxHiddenInput = document.getElementById('paxInput');
+
+        // Handles Pax counter calculation
+        function adjustPax(amount) {
+            currentPax += amount;
+            if (currentPax < 1) {
+                currentPax = 1;
+            }
+            paxValueSpan.textContent = currentPax;
+            paxHiddenInput.value = currentPax;
+        }
+
+        // SPA Navigation view switcher
+        function switchView(target) {
+            // Hide all views
+            const sections = document.querySelectorAll('.view-section');
+            sections.forEach(sec => sec.classList.remove('active-view'));
+
+            // Remove active classes from navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Show targets
+            const targetSection = document.getElementById(`section-${target}`);
+            const targetNavLink = document.getElementById(`nav-${target}`);
+
+            if (targetSection) targetSection.classList.add('active-view');
+            if (targetNavLink) targetNavLink.classList.add('active');
+
+            // Force dynamic page reload/calculation for data views
+            if (target === 'mybooking') {
+                loadBookingDetails();
+            }
+        }
+// Save session data to local browser storage
+        // Saves booking on submission, sends data to database, and flips view
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Show loading state on the button
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            
+            // Generate a random 4-digit Reference Number (between 1000 and 9999)
+            const generatedRef = Math.floor(1000 + Math.random() * 9000);
+
+            const bookingData = {
+                referenceNum: generatedRef,
+                username: document.getElementById('username').value,
+                kayakType: document.getElementById('kayakType').value,
+                dayTime: document.getElementById('dayTime').value,
+                sessionSlot: document.getElementById('sessionSlot').value,
+                pax: document.getElementById('paxInput').value,
+                paymentMethod: document.getElementById('paymentMethod').value
+            };
+
+            // Save to browser cache (for local page switching)
+            localStorage.setItem('kayakBooking', JSON.stringify(bookingData));
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
+
+            // Send data to the Google Sheet (Bypasses preflight CORS checks)
+            fetch(scriptURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(bookingData) 
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response failed');
+                }
+                return response.json();
+            })
+            .then(res => {
+                if (res.result === 'success') {
+                    alert(`Booking successfully registered!\n\nYour Reference Number is: #${generatedRef}\n\nA confirmation email has been sent to you.`);
+                    switchView('mybooking');
+                } else {
+                    alert('Database Error: ' + res.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error details:', error);
+                alert(`Connection Failed: Data saved locally instead.\n\nYour Reference Number is: #${generatedRef}`);
+                switchView('mybooking');
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        // Listens for the Enter key on the Reference Number field to look up a booking
+        document.getElementById('usernameDisplay').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                performDatabaseLookup();
+            }
+        });
+
+        // Pulls booking details from Google Sheets using GET request
+        function performDatabaseLookup() {
+            const refInput = document.getElementById('usernameDisplay').value.trim();
+            if (!refInput) {
+                alert('Please enter a Reference Number to look up.');
+                return;
+            }
+
+            // Set loading indicators inside detail card
+            document.getElementById('lbl-username').textContent = 'Searching...';
+            document.getElementById('lbl-session').textContent = 'Searching...';
+            document.getElementById('lbl-datetime').textContent = 'Searching...';
+            document.getElementById('lbl-kayak').textContent = 'Searching...';
+            document.getElementById('lbl-pax').textContent = 'Searching...';
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
+            const lookupURL = `${scriptURL}?ref=${encodeURIComponent(refInput)}`;
+
+            fetch(lookupURL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.result === 'success') {
+                    const booking = data.booking;
+                    
+                    // Display fetched records
+                    document.getElementById('lbl-username').textContent = booking.username;
+                    document.getElementById('lbl-pax').textContent = booking.pax;
+                    document.getElementById('lbl-kayak').textContent = booking.kayakType;
+                    document.getElementById('lbl-datetime').textContent = booking.dayTime;
+                    document.getElementById('lbl-session').textContent = booking.sessionSlot;
+                } else {
+                    alert(data.message || 'No booking record found.');
+                    clearBookingDetails();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                alert('Failed to connect to search database.');
+                clearBookingDetails();
+            });
+        }
+
+        // Automatically loads locally saved booking if available
+        function loadBookingDetails() {
+            const savedData = localStorage.getItem('kayakBooking');
+            
+            if (savedData) {
+                const booking = JSON.parse(savedData);
+                
+                // Populate the inputs with the generated reference code
+                document.getElementById('usernameDisplay').value = booking.referenceNum;
+                document.getElementById('lbl-username').textContent = booking.username;
+                document.getElementById('lbl-pax').textContent = booking.pax;
+                
+                let kayakName = booking.kayakType;
+                if (kayakName === 'single') kayakName = 'Single Kayak';
+                if (kayakName === 'double') kayakName = 'Double Kayak';
+                document.getElementById('lbl-kayak').textContent = kayakName;
+                
+                let timeText = booking.dayTime;
+                if (timeText === 'weekday-morning') timeText = 'Weekdays - Morning';
+                if (timeText === 'weekday-evening') timeText = 'Weekdays - Evening';
+                if (timeText === 'weekend-morning') timeText = 'Weekends - Morning';
+                if (timeText === 'weekend-evening') timeText = 'Weekends - Evening';
+                document.getElementById('lbl-datetime').textContent = timeText;
+
+                let sessionText = booking.sessionSlot;
+                if (sessionText === 'slot1') sessionText = 'Session 1 (08:00 AM - 10:00 AM)';
+                if (sessionText === 'slot2') sessionText = 'Session 2 (10:30 AM - 12:30 PM)';
+                if (sessionText === 'slot3') sessionText = 'Session 3 (02:30 PM - 04:30 PM)';
+                if (sessionText === 'slot4') sessionText = 'Session 4 (05:00 PM - 07:00 PM)';
+                document.getElementById('lbl-session').textContent = sessionText;
+            } else {
+                clearBookingDetails();
+            }
+        }
+
+        function clearBookingDetails() {
+            document.getElementById('lbl-username').textContent = '';
+            document.getElementById('lbl-session').textContent = '';
+            document.getElementById('lbl-datetime').textContent = '';
+            document.getElementById('lbl-kayak').textContent = '';
+            document.getElementById('lbl-pax').textContent = '';
+        }
+
+        // Run local load checks on startup
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBookingDetails();
+        });
+    </script>
+</body>
+</html>
+
+--- END OF FILE Paste June 21, 2026 - 2:58AM ---
