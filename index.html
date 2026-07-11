@@ -302,6 +302,18 @@
             background-color: var(--table-header-bg);
             color: #000000;
             width: 180px;
+            cursor: default !important; /* Keep timing column unclickable */
+        }
+
+        /* Makes schedule cells visually clickable with a hover fade */
+        .schedule-table td:not(.time-column) {
+            cursor: pointer;
+            transition: opacity 0.2s ease, filter 0.2s ease;
+        }
+
+        .schedule-table td:not(.time-column):hover {
+            opacity: 0.8;
+            filter: brightness(0.9);
         }
 
         /* Color classes mapped directly to screenshot slots */
@@ -375,12 +387,14 @@
             position: relative;
         }
 
+        /* Sets pointer-events to none so clicks pass straight to inputs/dropdowns */
         .pill-container i.field-icon {
             font-size: 24px;
             color: #333333;
             margin-right: 15px;
             width: 30px;
             text-align: center;
+            pointer-events: none; 
         }
 
         .pill-container input, .pill-container select {
@@ -771,300 +785,6 @@
                 font-size: 16px;
             }
         }
-
-        /* ==========================================
-           10. ADMIN DASHBOARD STYLES (NEW)
-           ========================================== */
-        #section-dashboard {
-            padding: 40px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .dashboard-top-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .dashboard-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        .dashboard-title p {
-            color: #666666;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        .stat-card {
-            background-color: var(--primary-blue);
-            color: #ffffff;
-            border-radius: 15px;
-            padding: 15px 25px;
-            text-align: center;
-            min-width: 140px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        .stat-card h3 {
-            font-size: 32px;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .stat-card p {
-            font-size: 12px;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #b5cbeb;
-        }
-
-        .dashboard-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .search-input-wrapper {
-            position: relative;
-            flex: 1;
-            max-width: 300px;
-        }
-
-        .search-input-wrapper input {
-            width: 100%;
-            height: 40px;
-            border: 1.5px solid #cccccc;
-            border-radius: 20px;
-            padding: 0 15px 0 35px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .search-input-wrapper i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888888;
-            font-size: 14px;
-        }
-
-        .day-select-wrapper {
-            position: relative;
-        }
-
-        .day-select-wrapper select {
-            height: 40px;
-            border: 1.5px solid #cccccc;
-            border-radius: 20px;
-            padding: 0 35px 0 15px;
-            font-size: 14px;
-            outline: none;
-            background: #ffffff;
-            cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .day-select-wrapper .select-arrow {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            font-size: 10px;
-            color: #666666;
-        }
-
-        .refresh-btn {
-            background-color: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            height: 40px;
-            padding: 0 20px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s;
-        }
-
-        .refresh-btn:hover {
-            background-color: #06314f;
-        }
-
-        .dashboard-table-card {
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        .dashboard-table-wrapper {
-            overflow-x: auto;
-        }
-
-        .dashboard-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            min-width: 900px;
-        }
-
-        .dashboard-table thead {
-            background-color: var(--primary-blue);
-            color: #ffffff;
-        }
-
-        .dashboard-table th {
-            padding: 15px 20px;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .dashboard-table tbody tr {
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.15s;
-        }
-
-        .dashboard-table tbody tr:hover {
-            background-color: #fafbfc;
-        }
-
-        .dashboard-table td {
-            padding: 15px 20px;
-            font-size: 14px;
-            color: #333333;
-        }
-
-        .dashboard-table td.ref-cell {
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        .cancel-row-btn {
-            background-color: #ffeeee;
-            color: #d32f2f;
-            border: 1px solid #ffcccc;
-            padding: 6px 16px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 12px;
-            text-transform: uppercase;
-            transition: all 0.2s;
-        }
-
-        .cancel-row-btn:hover {
-            background-color: #d32f2f;
-            color: #ffffff;
-            border-color: #d32f2f;
-        }
-
-        /* Login modal overlay styles */
-        .login-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .login-card {
-            background-color: #ffffff;
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            text-align: center;
-            border: 2px solid var(--primary-blue);
-            animation: scaleIn 0.3s ease-out;
-            position: relative; /* Enabled relative positioning for the close button to align correctly */
-        }
-
-        @keyframes scaleIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .login-card h3 {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
-
-        .login-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .login-input {
-            height: 50px;
-            border: 1.5px solid #cccccc;
-            border-radius: 25px;
-            padding: 0 20px;
-            font-size: 14px;
-            outline: none;
-            width: 100%;
-        }
-
-        .login-btn {
-            background-color: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            border-radius: 25px;
-            height: 50px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .login-btn:hover {
-            background-color: #06314f;
-        }
-
-        /* Shared Close Modal/Overlay Button Stylings */
-        .close-modal-btn {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #666;
-            transition: color 0.2s;
-        }
-
-        .close-modal-btn:hover {
-            color: #000;
-        }
     </style>
 </head>
 <body>
@@ -1081,14 +801,11 @@
             <ul>
                 <li><a id="nav-home" class="active" onclick="switchView('home')">Home</a></li>
                 <li><a id="nav-schedule" onclick="switchView('schedule')">Kayak Schedule</a></li>
-                <!-- Session Booking opens the Modal dynamically -->
-                <li><a id="nav-booking" onclick="openBookingModal()">Session Booking</a></li>
+                <li><a id="nav-booking" onclick="switchView('booking')">Session Booking</a></li>
                 <li><a id="nav-mybooking" onclick="switchView('mybooking')">My Booking</a></li>
                 <li><a id="nav-about" onclick="switchView('about')">About</a></li>
                 <li><a id="nav-contacts" onclick="switchView('contacts')">Contacts</a></li>
-                <li><a id="nav-dashboard" onclick="switchView('dashboard')">Dashboard</a></li>
             </ul>
-            <button id="header-logout-btn" class="header-logout-btn" style="display: none;" onclick="adminLogout()">Logout</button>
         </nav>
     </header>
 
@@ -1199,6 +916,118 @@
                     <span>Athletes Training Session</span>
                 </div>
             </div>
+        </section>
+
+        <!-- ==========================================
+           SECTION 3: SESSION BOOKING
+           ========================================== -->
+        <section id="section-booking" class="view-section">
+            <div class="title-container">
+                <i class="fa-regular fa-calendar-check"></i>
+                <h1>Session Booking</h1>
+            </div>
+
+            <form class="booking-form" id="kayakBookingForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-user field-icon"></i>
+                        <input type="email" id="username" placeholder="username@gmail.com" required>
+                    </div>
+                </div>
+
+                <!-- Column Split: Single Kayak Counter -->
+                <div class="form-group">
+                    <label>Single Kayak</label>
+                    <div class="pill-container">
+                        <i class="fa-solid fa-person field-icon"></i>
+                        <span class="pax-display" id="singleValue">0</span>
+                        <input type="hidden" id="singleInput" name="singleQty" value="0">
+                        <div class="pax-controls">
+                            <button type="button" class="pax-btn" onclick="adjustSingle(1)"><i class="fa-solid fa-plus"></i></button>
+                            <button type="button" class="pax-btn" onclick="adjustSingle(-1)"><i class="fa-solid fa-minus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dayTime">Day / Time</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-calendar field-icon"></i>
+                        <select id="dayTime" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="weekday-morning">Weekdays - Morning</option>
+                            <option value="weekday-evening">Weekdays - Evening</option>
+                            <option value="weekend-morning">Weekends - Morning</option>
+                            <option value="weekend-evening">Weekends - Evening</option>
+                        </select>
+                        <div class="dropdown-indicator">v</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sessionSlot">Session</label>
+                    <div class="pill-container">
+                        <i class="fa-regular fa-clock field-icon"></i>
+                        <select id="sessionSlot" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="slot1">Session 1 (08:00 AM - 10:00 AM)</option>
+                            <option value="slot2">Session 2 (10:30 AM - 12:30 PM)</option>
+                            <option value="slot3">Session 3 (02:30 PM - 04:30 PM)</option>
+                            <option value="slot4">Session 4 (05:00 PM - 07:00 PM)</option>
+                        </select>
+                        <div class="dropdown-indicator">v</div>
+                    </div>
+                </div>
+
+                <!-- Column Split: Double Kayak Counter -->
+                <div class="form-group">
+                    <label>Double Kayak</label>
+                    <div class="pill-container">
+                        <i class="fa-solid fa-people-group field-icon"></i>
+                        <span class="pax-display" id="doubleValue">0</span>
+                        <input type="hidden" id="doubleInput" name="doubleQty" value="0">
+                        <div class="pax-controls">
+                            <button type="button" class="pax-btn" onclick="adjustDouble(1)"><i class="fa-solid fa-plus"></i></button>
+                            <button type="button" class="pax-btn" onclick="adjustDouble(-1)"><i class="fa-solid fa-minus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment</label>
+                    <div>
+                        <div class="pill-container">
+                            <i class="fa-regular fa-credit-card field-icon"></i>
+                            <select id="paymentMethod" required onchange="toggleQRDisplay()">
+                                <option value="" disabled selected hidden></option>
+                                <option value="student-id">Student ID Card</option>
+                                <option value="qr">QR Code (DuitNow)</option>
+                            </select>
+                            <div class="dropdown-indicator">v</div>
+                        </div>
+                        <div class="helper-text" id="payment-helper">UTP students may select the option : student ID card</div>
+                        
+                        <!-- DuitNow QR Container -->
+                        <div id="qr-container" style="display: none; text-align: center; margin-top: 15px; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 20px; background-color: #f9fbfd;">
+                            <p style="font-weight: bold; margin-bottom: 10px; color: var(--primary-blue);">Scan to Pay via DuitNow QR</p>
+                            <!-- Custom QR Code Image pointing to user's direct link -->
+                            <img id="qr-image" src="https://i.postimg.cc/9F4P2vWz/Duit-Now-QR.jpg" alt="DuitNow QR" style="width: 180px; height: auto; border-radius: 10px; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                            <p style="font-size: 12px; color: #555; margin-top: 8px; font-weight: 500;">Please scan and pay before clicking "Book Session".</p>
+                            
+                            <!-- Receipt Upload Field -->
+                            <div id="receipt-upload-container" style="margin-top: 15px; text-align: left;">
+                                <label for="receiptFile" style="font-weight: bold; font-size: 14px; display: block; margin-bottom: 5px; color: #000000;">Upload Proof of Payment (Receipt):</label>
+                                <input type="file" id="receiptFile" accept="image/*,application/pdf" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 10px; background: white;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Book Session</button>
+                </div>
+            </form>
         </section>
 
         <!-- ==========================================
@@ -1341,207 +1170,7 @@
             </div>
         </section>
 
-        <!-- ==========================================
-           SECTION 7: ADMIN DASHBOARD (NEW)
-           ========================================== -->
-        <section id="section-dashboard" class="view-section">
-            <div class="dashboard-container">
-                <div class="dashboard-top-row">
-                    <div class="dashboard-title">
-                        <h2>Admin Dashboard</h2>
-                        <p>Logged in as: <strong id="admin-display-email" style="color: var(--primary-blue);">admin@utp.edu.my</strong></p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="stat-total-bookings">0</h3>
-                        <p>Total Bookings</p>
-                    </div>
-                </div>
-
-                <div class="dashboard-toolbar">
-                    <div class="search-input-wrapper">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="adminSearchInput" onkeyup="filterAdminTable()" placeholder="Search by reference number...">
-                    </div>
-                    
-                    <div class="day-select-wrapper">
-                        <select id="adminDayFilter" onchange="filterAdminTable()">
-                            <option value="all">All Days</option>
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                            <option value="Saturday">Saturday</option>
-                            <option value="Sunday">Sunday</option>
-                        </select>
-                        <i class="fa-solid fa-chevron-down select-arrow"></i>
-                    </div>
-
-                    <button class="refresh-btn" onclick="fetchAdminBookings()">
-                        <i class="fa-solid fa-rotate"></i> Refresh
-                    </button>
-                    <button class="refresh-btn" style="background-color: #d32f2f;" onclick="adminLogout()">
-                        <i class="fa-solid fa-door-open"></i> Exit
-                    </button>
-                </div>
-
-                <div class="dashboard-table-card">
-                    <div class="dashboard-table-wrapper">
-                        <table class="dashboard-table" id="adminBookingsTable">
-                            <thead>
-                                <tr>
-                                    <th>Ref #</th>
-                                    <th>Username / Email</th>
-                                    <th>Day</th>
-                                    <th>Date</th>
-                                    <th>Session</th>
-                                    <th>Kayak Type</th>
-                                    <th>Pax</th>
-                                    <th>Payment</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-table-body">
-                                <!-- Bookings rows loaded dynamically via API -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
-
-    <!-- ==========================================
-       SECTION 3: SESSION BOOKING (POPUP MODAL CONTAINER)
-       ========================================== -->
-    <div id="booking-modal" class="booking-modal-overlay">
-        <div class="booking-modal-card">
-            <!-- Close button for the booking modal -->
-            <button class="close-modal-btn" onclick="closeBookingModal()">&times;</button>
-            
-            <div class="title-container">
-                <i class="fa-regular fa-calendar-check"></i>
-                <h1 style="font-size: 2.2rem;">Session Booking</h1>
-            </div>
-
-            <form class="booking-form" id="kayakBookingForm" onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <div class="pill-container">
-                        <i class="fa-regular fa-user field-icon"></i>
-                        <input type="email" id="username" placeholder="username@gmail.com" required>
-                    </div>
-                </div>
-
-                <!-- Column Split: Single Kayak Counter -->
-                <div class="form-group">
-                    <label>Single Kayak</label>
-                    <div class="pill-container">
-                        <i class="fa-solid fa-person field-icon"></i>
-                        <span class="pax-display" id="singleValue">0</span>
-                        <input type="hidden" id="singleInput" name="singleQty" value="0">
-                        <div class="pax-controls">
-                            <button type="button" class="pax-btn" onclick="adjustSingle(1)"><i class="fa-solid fa-plus"></i></button>
-                            <button type="button" class="pax-btn" onclick="adjustSingle(-1)"><i class="fa-solid fa-minus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="dayTime">Day / Time</label>
-                    <div class="pill-container">
-                        <i class="fa-regular fa-calendar field-icon"></i>
-                        <select id="dayTime" required>
-                            <option value="" disabled selected hidden></option>
-                            <option value="weekday-morning">Weekdays - Morning</option>
-                            <option value="weekday-evening">Weekdays - Evening</option>
-                            <option value="weekend-morning">Weekends - Morning</option>
-                            <option value="weekend-evening">Weekends - Evening</option>
-                        </select>
-                        <div class="dropdown-indicator">v</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="sessionSlot">Session</label>
-                    <div class="pill-container">
-                        <i class="fa-regular fa-clock field-icon"></i>
-                        <select id="sessionSlot" required>
-                            <option value="" disabled selected hidden></option>
-                            <option value="slot1">Session 1 (08:00 AM - 10:00 AM)</option>
-                            <option value="slot2">Session 2 (10:30 AM - 12:30 PM)</option>
-                            <option value="slot3">Session 3 (02:30 PM - 04:30 PM)</option>
-                            <option value="slot4">Session 4 (05:00 PM - 07:00 PM)</option>
-                        </select>
-                        <div class="dropdown-indicator">v</div>
-                    </div>
-                </div>
-
-                <!-- Column Split: Double Kayak Counter -->
-                <div class="form-group">
-                    <label>Double Kayak</label>
-                    <div class="pill-container">
-                        <i class="fa-solid fa-people-group field-icon"></i>
-                        <span class="pax-display" id="doubleValue">0</span>
-                        <input type="hidden" id="doubleInput" name="doubleQty" value="0">
-                        <div class="pax-controls">
-                            <button type="button" class="pax-btn" onclick="adjustDouble(1)"><i class="fa-solid fa-plus"></i></button>
-                            <button type="button" class="pax-btn" onclick="adjustDouble(-1)"><i class="fa-solid fa-minus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="paymentMethod">Payment</label>
-                    <div>
-                        <div class="pill-container">
-                            <i class="fa-regular fa-credit-card field-icon"></i>
-                            <select id="paymentMethod" required onchange="toggleQRDisplay()">
-                                <option value="" disabled selected hidden></option>
-                                <option value="student-id">Student ID Card</option>
-                                <option value="qr">QR Code (DuitNow)</option>
-                            </select>
-                            <div class="dropdown-indicator">v</div>
-                        </div>
-                        <div class="helper-text" id="payment-helper">UTP students may select the option : student ID card</div>
-                        
-                        <!-- DuitNow QR Container -->
-                        <div id="qr-container" style="display: none; text-align: center; margin-top: 15px; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 20px; background-color: #f9fbfd;">
-                            <p style="font-weight: bold; margin-bottom: 10px; color: var(--primary-blue);">Scan to Pay via DuitNow QR</p>
-                            <!-- Custom QR Code Image pointing to user's direct link -->
-                            <img id="qr-image" src="https://i.postimg.cc/4x4gBs7t/Whats-App-Image-2026-06-21-at-4-33-26-AM.jpg" alt="DuitNow QR" style="width: 180px; height: auto; border-radius: 10px; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                            <p style="font-size: 12px; color: #555; margin-top: 8px; font-weight: 500;">Please scan and pay before clicking "Book Session".</p>
-                            
-                            <!-- Receipt Upload Field -->
-                            <div id="receipt-upload-container" style="margin-top: 15px; text-align: left;">
-                                <label for="receiptFile" style="font-weight: bold; font-size: 14px; display: block; margin-bottom: 5px; color: #000000;">Upload Proof of Payment (Receipt):</label>
-                                <input type="file" id="receiptFile" accept="image/*,application/pdf" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 10px; background: white;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="submit-btn">Book Session</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Login Modal -->
-    <div id="admin-login-overlay" class="login-overlay" style="display: none;">
-        <div class="login-card">
-            <i class="fa-solid fa-lock" style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 15px;"></i>
-            <h3>UTP Admin Login</h3>
-            <div class="login-input-group">
-                <input type="email" id="adminEmail" class="login-input" placeholder="admin@utp.edu.my">
-                <input type="password" id="adminPassword" class="login-input" placeholder="••••••••">
-            </div>
-            <button class="login-btn" onclick="handleAdminLogin()">Login</button>
-            <p id="login-error-msg" style="color: #d32f2f; font-size: 13px; margin-top: 15px; font-weight: bold; display: none;"></p>
-        </div>
-    </div>
 
     <!-- ==========================================
        BOTTOM FOOTER BAR
@@ -1589,18 +1218,8 @@
             doubleHiddenInput.value = currentDouble;
         }
 
-        // Global state for admin session
-        let isAdminLoggedIn = false;
-        let originalBookingsData = []; // Store raw bookings list for filtering
-
         // SPA Navigation view switcher
         function switchView(target) {
-            // Guard clause: If user clicks Dashboard but is not logged in, trigger Login Modal
-            if (target === 'dashboard' && !isAdminLoggedIn) {
-                document.getElementById('admin-login-overlay').style.display = 'flex';
-                return;
-            }
-
             // Hide all views
             const sections = document.querySelectorAll('.view-section');
             sections.forEach(sec => sec.classList.remove('active-view'));
@@ -1619,10 +1238,6 @@
             // Force dynamic page reload/calculation for data views
             if (target === 'mybooking') {
                 loadBookingDetails();
-            }
-
-            if (target === 'dashboard') {
-                fetchAdminBookings();
             }
             
             // Auto-scrolls window back to the top to prevent manual scrolling
@@ -1711,17 +1326,29 @@
                 submitBtn.disabled = false;
                 return;
             }
+
+            const singleQty = parseInt(document.getElementById('singleInput').value);
+            const doubleQty = parseInt(document.getElementById('doubleInput').value);
+
+            // Validation: Require at least 1 kayak selection
+            if (singleQty === 0 && doubleQty === 0) {
+                alert('Please select at least 1 Kayak (Single or Double) to book.');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
             
             // Generate a random 4-digit Reference Number (between 1000 and 9999)
             const generatedRef = Math.floor(1000 + Math.random() * 9000);
 
+            // Formats kayak count and total pax dynamically to fit spreadsheet parameters
             const bookingData = {
                 referenceNum: generatedRef,
                 username: document.getElementById('username').value,
-                kayakType: document.getElementById('kayakType').value,
+                kayakType: `Single: ${singleQty}, Double: ${doubleQty}`,
                 dayTime: document.getElementById('dayTime').value,
                 sessionSlot: document.getElementById('sessionSlot').value,
-                pax: document.getElementById('paxInput').value,
+                pax: (singleQty * 1) + (doubleQty * 2), // Total people
                 paymentMethod: paymentMethod,
                 receipt: null
             };
@@ -1772,111 +1399,4 @@
         }
 
         // Listens for the Enter key on the Reference Number field to look up a booking
-        document.getElementById('usernameDisplay').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                performDatabaseLookup();
-            }
-        });
-
-        // Pulls booking details from Google Sheets using GET request
-        function performDatabaseLookup() {
-            const refInput = document.getElementById('usernameDisplay').value.trim();
-            if (!refInput) {
-                alert('Please enter a Reference Number to look up.');
-                return;
-            }
-
-            // Set loading indicators inside detail card
-            document.getElementById('lbl-username').textContent = 'Searching...';
-            document.getElementById('lbl-ref').textContent = 'Searching...';
-            document.getElementById('lbl-session').textContent = 'Searching...';
-            document.getElementById('lbl-datetime').textContent = 'Searching...';
-            document.getElementById('lbl-kayak').textContent = 'Searching...';
-            document.getElementById('lbl-pax').textContent = 'Searching...';
-
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyhY6yQVbBXq08E7W3-n1CSEOKs_bbUX1ms-ENe5tw1SBKlJEwu2Dfmx_hbTpihIMN6rQ/exec';
-            const lookupURL = `${scriptURL}?ref=${encodeURIComponent(refInput)}`;
-
-            fetch(lookupURL)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response failed');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.result === 'success') {
-                    const booking = data.booking;
-                    
-                    // Display fetched records
-                    document.getElementById('lbl-username').textContent = booking.username;
-                    document.getElementById('lbl-pax').textContent = booking.pax;
-                    document.getElementById('lbl-kayak').textContent = booking.kayakType;
-                    document.getElementById('lbl-datetime').textContent = booking.dayTime;
-                    document.getElementById('lbl-session').textContent = booking.sessionSlot;
-                    document.getElementById('lbl-ref').textContent = booking.referenceNum;
-                } else {
-                    alert(data.message || 'No booking record found.');
-                    clearBookingDetails();
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                alert('Failed to connect to search database.');
-                clearBookingDetails();
-            });
-        }
-
-        // Automatically loads locally saved booking if available
-        function loadBookingDetails() {
-            const savedData = localStorage.getItem('kayakBooking');
-            
-            if (savedData) {
-                const booking = JSON.parse(savedData);
-                
-                // Populate the inputs with the generated reference code
-                document.getElementById('usernameDisplay').value = booking.referenceNum;
-                document.getElementById('lbl-username').textContent = booking.username;
-                document.getElementById('lbl-pax').textContent = booking.pax;
-                document.getElementById('lbl-ref').textContent = booking.referenceNum || "";
-                
-                let kayakName = booking.kayakType;
-                if (kayakName === 'single') kayakName = 'Single Kayak';
-                if (kayakName === 'double') kayakName = 'Double Kayak';
-                document.getElementById('lbl-kayak').textContent = kayakName;
-                
-                let timeText = booking.dayTime;
-                if (timeText === 'weekday-morning') timeText = 'Weekdays - Morning';
-                if (timeText === 'weekday-evening') timeText = 'Weekdays - Evening';
-                if (timeText === 'weekend-morning') timeText = 'Weekends - Morning';
-                if (timeText === 'weekend-evening') timeText = 'Weekends - Evening';
-                document.getElementById('lbl-datetime').textContent = timeText;
-
-                let sessionText = booking.sessionSlot;
-                if (sessionText === 'slot1') sessionText = 'Session 1 (08:00 AM - 10:00 AM)';
-                if (sessionText === 'slot2') sessionText = 'Session 2 (10:30 AM - 12:30 PM)';
-                if (sessionText === 'slot3') sessionText = 'Session 3 (02:30 PM - 04:30 PM)';
-                if (sessionText === 'slot4') sessionText = 'Session 4 (05:00 PM - 07:00 PM)';
-                document.getElementById('lbl-session').textContent = sessionText;
-            } else {
-                clearBookingDetails();
-            }
-        }
-
-        function clearBookingDetails() {
-            document.getElementById('lbl-username').textContent = '';
-            document.getElementById('lbl-ref').textContent = '';
-            document.getElementById('lbl-session').textContent = '';
-            document.getElementById('lbl-datetime').textContent = '';
-            document.getElementById('lbl-kayak').textContent = '';
-            document.getElementById('lbl-pax').textContent = '';
-        }
-
-        // Run local load checks on startup
-        document.addEventListener('DOMContentLoaded', () => {
-            loadBookingDetails();
-        });
-    </script>
-</body>
-</html>
+        document.getElementById('usernameDisplay').add
